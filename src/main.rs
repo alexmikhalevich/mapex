@@ -1,9 +1,7 @@
-mod map_builder;
+mod components;
 
-use map_builder::get_tiles;
+use components::tile_layer::TileLayerComponent;
 
-#[tokio::main]
-async fn main() {
-    println!("Starting");
-    get_tiles(1, 1, 1, "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png").await;
+fn main() {
+    yew::start_app::<TileLayerComponent>();
 }
