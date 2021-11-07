@@ -2,7 +2,7 @@ use strfmt::strfmt;
 use std::collections::HashMap;
 use crate::components::icomponent::{MapexComponent, Html};
 
-#[derive(Clone, Eq)]
+#[derive(Clone, PartialEq, Eq)]
 pub struct TileComponent {
     pub x_translate: i32,
     pub y_translate: i32,

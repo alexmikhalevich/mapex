@@ -3,7 +3,7 @@ use std::fmt::Write;
 use crate::components::tile::TileComponent;
 use crate::components::icomponent::{MapexComponent, Html};
 
-#[derive(Clone, Eq)]
+#[derive(Clone, PartialEq, Eq)]
 pub struct TileLayerComponent {
     tiles: LinkedList<TileComponent>,
 }
