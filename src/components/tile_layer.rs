@@ -6,6 +6,8 @@ use crate::components::icomponent::{MapexComponent, Html};
 #[derive(Clone, PartialEq, Eq)]
 pub struct TileLayerComponent {
     tiles: LinkedList<TileComponent>,
+    width: u32,
+    height: u32
 }
 
 impl TileLayerComponent {
@@ -20,6 +22,8 @@ impl TileLayerComponent {
             tile_source: tile_source.to_string()};
         TileLayerComponent {
             tiles: LinkedList::from([tile]),
+            width,
+            height
         }
     }
 }
@@ -31,6 +35,7 @@ impl MapexComponent for TileLayerComponent {
             write!(&mut tiles_html, "{}", tile.html())
                 .unwrap_or_else(|e| panic!("Unable to build tile layer: {}", e));
         }
-        format!("<div>{}</div>", tiles_html)
+        let style = format!("border: 1px solid black, width: {}, height: {}", self.width, self.height);
+        format!("<div class='mapex-tile-layer' style='{}'>{}</div>", style, tiles_html)
     }
 }

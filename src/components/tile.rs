@@ -28,7 +28,7 @@ impl MapexComponent for TileComponent {
     fn html(&self) -> Html {
         let translate = format!("translate3d({}, {}, {})",
             self.x_translate, self.y_translate, self.z_translate);
-        format!("<img class='mapex-tile' style='transform: {}' src={} />",
+        format!("<img class='mapex-tile' style='transform: {}' src='{}' />",
             translate, self.build_tile_url())
     }
 }
