@@ -9,15 +9,18 @@ pub struct TileLayerComponent {
 }
 
 impl TileLayerComponent {
-    pub fn create(&mut self, width: u32, height: u32, tile_source: &str) {
-        self.tiles.push_back(TileComponent{
+    pub fn create(width: u32, height: u32, tile_source: &str) -> TileLayerComponent {
+        let tile = TileComponent{
             x_translate: 0,
             y_translate: 0,
             z_translate: 0,
             x_tile: 1,
             y_tile: 1,
             z_tile: 2,
-            tile_source: tile_source.to_string()});
+            tile_source: tile_source.to_string()};
+        TileLayerComponent {
+            tiles: LinkedList::from([tile]),
+        }
     }
 }
 
