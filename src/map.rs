@@ -12,8 +12,8 @@ impl Map {
     }
 }
 
-impl Map {
-    pub fn html(&self) -> Html {
+impl MapexComponent for Map {
+    fn html(&self) -> Html {
         self.tile_layer.html()
     }
 }
