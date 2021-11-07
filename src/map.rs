@@ -1,6 +1,7 @@
 use crate::components::tile_layer::TileLayerComponent;
 use crate::components::icomponent::{MapexComponent, Html};
 
+#[derive(Clone, Eq)]
 pub struct Map {
     tile_layer: TileLayerComponent,
 }
