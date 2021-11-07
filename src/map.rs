@@ -1,7 +1,18 @@
+use crate::components::tile_layer::TileLayerComponent;
+use crate::components::icomponent::{MapexComponent, Html};
+
 pub struct Map {
-    tile_source: &str,
+    tile_layer: TileLayerComponent,
 }
 
 impl Map {
-    pub fn html(&self) -> &str {}
+    pub fn create(&mut self, width: u32, height: u32, tile_source: &str) {
+        self.tile_layer.create(width, height, tile_source);
+    }
+}
+
+impl Map {
+    pub fn html(&self) -> Html {
+        self.tile_layer.html()
+    }
 }

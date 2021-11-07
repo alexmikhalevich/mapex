@@ -9,7 +9,7 @@ pub struct TileComponent {
     pub x_tile: u32,
     pub y_tile: u32,
     pub z_tile: u8,
-    pub source_url: &str,
+    pub tile_source: String,
 }
 
 impl TileComponent {
@@ -18,7 +18,7 @@ impl TileComponent {
         coords.insert("x".to_string(), self.x_tile.clone());
         coords.insert("y".to_string(), self.y_tile.clone());
         coords.insert("z".to_string(), self.z_tile.clone().into());
-        strfmt(&self.source_url.to_string(), &coords)
+        strfmt(&self.tile_source, &coords)
             .unwrap_or_else(|e| panic!("Failed to build tile URL: {}", e))
     }
 }

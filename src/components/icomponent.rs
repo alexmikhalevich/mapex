@@ -1,5 +1,5 @@
-type Html = &str;
+pub type Html = String;
 
-trait MapexComponent {
+pub trait MapexComponent {
     fn html(&self) -> Html;
 }
