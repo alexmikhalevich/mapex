@@ -30,12 +30,12 @@ impl TileLayerComponent {
 
 impl MapexComponent for TileLayerComponent {
     fn html(&self) -> Html {
-        let mut tiles_html = String::new();
+        let mut tiles_html = Html::new();
         for tile in &self.tiles {
             write!(&mut tiles_html, "{}", tile.html())
                 .unwrap_or_else(|e| panic!("Unable to build tile layer: {}", e));
         }
-        let style = format!("border: 1px solid black, width: {}, height: {}", self.width, self.height);
+        let style = format!("border: 1px solid black; width: {}px; height: {}px", self.width, self.height);
         format!("<div class='mapex-tile-layer' style='{}'>{}</div>", style, tiles_html)
     }
 }
