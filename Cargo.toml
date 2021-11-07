@@ -2,9 +2,9 @@
 name = "mapex"
 version = "0.0.1"
 edition = "2021"
+authors = "Alex Mikhalevich alex@mikhalevich.com"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 strfmt = { git = "https://github.com/vitiral/strfmt.git", branch = "master" }
-yew = "0.18"

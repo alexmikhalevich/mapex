@@ -1,45 +1,31 @@
-use yew::{Component, ComponentLink, html, Html, ShouldRender, Properties};
+use std::collections::LinkedList;
 use crate::components::tile::TileComponent;
-
-#[derive(PartialEq, Clone, Properties, Default)]
-pub struct Props {
-}
+use crate::components::icomponent::{MapexComponent, Html};
 
 pub struct TileLayerComponent {
-    props: Props,
-    link: ComponentLink<Self>,
+    tiles: LinkedList<TileComponent>,
+    source_url: &str,
 }
 
-impl Component for TileLayerComponent {
-    type Properties = Props;
-    type Message = ();
-
-    fn create(props: Self::Properties, link: ComponentLink<Self>) -> Self {
-        TileLayerComponent { props, link }
+impl TileLayerComponent {
+    pub fn create(&self, width: u32, height: u32) {
+        self.tiles.push_back(TileComponent{
+            translate_x: 0,
+            translate_y: 0,
+            translate_z: 0,
+            x_tile: 1,
+            y_tile: 1,
+            z_tile: 2,
+            source_url});
     }
 
-    fn view(&self) -> Html {
-        html! {
-            <div>
-                <TileComponent
-                    x_translate=0 y_translate=0 z_translate=0
-                    x_tile=1 y_tile=1 z_tile=2
-                    source_url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-            </div>
+impl MapexComponent for TileLayerComponent {
+    fn html(&self) -> Html {
+        let mut tiles_html = String::new();
+        for tile in self.tiles {
+            write!(&mut tiles_html, "{}", tile.html())
+                .unwrap_or_else(|e| panic!("Unable to build tile layer: {}", e));
         }
-    }
-
-    fn update(&mut self, msg: Self::Message) -> ShouldRender {
-        false
-    }
-
-    fn change(&mut self, props: Self::Properties) -> ShouldRender {
-        if self.props != props {
-            self.props = props;
-            true
-        } else {
-            false
-        }
+        format!("<div>{}</div>", tiles_html)
     }
 }
