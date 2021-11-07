@@ -1,5 +1,5 @@
+pub use crate::components::icomponent::{MapexComponent, Html};
 use crate::components::tile_layer::TileLayerComponent;
-use crate::components::icomponent::{MapexComponent, Html};
 
 #[derive(Clone, PartialEq, Eq)]
 pub struct Map {
